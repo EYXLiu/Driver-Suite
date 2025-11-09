@@ -13,7 +13,7 @@ void sleep_us(uint64_t us) {
     while ((timer_get_us() - start) < us);
 }
 
-uint64_t timer_get_ms(void) {
+uint64_t timer_get_us(void) {
     uint32_t hi, lo1, lo2;
     do {
         hi = TIMER_TIMERAWH;
@@ -24,8 +24,8 @@ uint64_t timer_get_ms(void) {
     return ((uint64_t)hi << 32) | lo2;
 }
 
-uint64_t timer_get_us(void) {
-    return timer_get_ms() / 1000;
+uint64_t timer_get_ms(void) {
+    return timer_get_us() / 1000;
 }
 
 uint64_t timer_elapsed_us(uint64_t start) {
