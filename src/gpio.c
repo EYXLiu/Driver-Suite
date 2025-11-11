@@ -58,9 +58,9 @@ gpio_t *gpio_init(uint8_t pin, gpio_mode_t mode, gpio_callback_t callback) {
 
 void gpio_write(gpio_t *gpio, gpio_value_t value) {
     if (value == GPIO_LOW) {
-        SIO_GPIO_OUT |= (1u << gpio->pin);
-    } else {
         SIO_GPIO_OUT &= ~(1u << gpio->pin);
+    } else {
+        SIO_GPIO_OUT |= (1u << gpio->pin);
     }
 }
 
